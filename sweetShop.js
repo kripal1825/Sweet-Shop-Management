@@ -68,6 +68,16 @@ class SweetShop {
     this.inventory.set(id, sweet); // Optional, but keeps logic clear
   }
 
+  restockSweet(id, quantity) {
+    const sweet = this.inventory.get(id);
+
+    if (!sweet) {
+      throw new Error('Sweet with this ID does not exist.');
+    }
+
+    sweet.quantity += quantity;
+    this.inventory.set(id, sweet); // Optional for clarity
+  }
 
 }
 
