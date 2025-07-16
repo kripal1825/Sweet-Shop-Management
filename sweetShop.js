@@ -53,6 +53,21 @@ class SweetShop {
     return Array.from(this.inventory.values()).sort((a, b) => b.quantity - a.quantity);
   }
 
+    purchaseSweet(id, quantity) {
+    const sweet = this.inventory.get(id);
+
+    if (!sweet) {
+      throw new Error('Sweet with this ID does not exist.');
+    }
+
+    if (sweet.quantity < quantity) {
+      throw new Error('Not enough stock available.');
+    }
+
+    sweet.quantity -= quantity;
+    this.inventory.set(id, sweet); // Optional, but keeps logic clear
+  }
+
 
 }
 
