@@ -39,6 +39,21 @@ class SweetShop {
     );
   }
 
+    sortByName() {
+    return Array.from(this.inventory.values()).sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+  }
+
+  sortByPrice() {
+    return Array.from(this.inventory.values()).sort((a, b) => a.price - b.price);
+  }
+
+  sortByQuantity() {
+    return Array.from(this.inventory.values()).sort((a, b) => b.quantity - a.quantity);
+  }
+
+
 }
 
 module.exports = SweetShop;
