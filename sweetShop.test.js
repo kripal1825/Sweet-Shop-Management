@@ -44,3 +44,29 @@ describe('SweetShop - Add Sweet', () => {
     expect(() => shop.addSweet(sweet2)).toThrow('Sweet with this ID already exists.');
   });
 });
+
+describe('SweetShop - Delete Sweet', () => {
+  let shop;
+
+  beforeEach(() => {
+    shop = new SweetShop();
+    shop.addSweet({
+      id: 1001,
+      name: 'Kaju Katli',
+      category: 'Nut-Based',
+      price: 50,
+      quantity: 20
+    });
+  });
+
+  test('should delete a sweet by ID', () => {
+    shop.deleteSweet(1001);
+    const allSweets = shop.getAllSweets();
+    expect(allSweets.length).toBe(0);
+  });
+
+  test('should throw error if trying to delete non-existent sweet', () => {
+    expect(() => shop.deleteSweet(9999)).toThrow('Sweet with this ID does not exist.');
+  });
+});
+
