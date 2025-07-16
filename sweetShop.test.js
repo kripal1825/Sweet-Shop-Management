@@ -70,3 +70,33 @@ describe('SweetShop - Delete Sweet', () => {
   });
 });
 
+
+describe('SweetShop - View Sweets', () => {
+  let shop;
+
+  beforeEach(() => {
+    shop = new SweetShop();
+    shop.addSweet({
+      id: 1001,
+      name: 'Kaju Katli',
+      category: 'Nut-Based',
+      price: 50,
+      quantity: 20
+    });
+    shop.addSweet({
+      id: 1002,
+      name: 'Gajar Halwa',
+      category: 'Vegetable-Based',
+      price: 30,
+      quantity: 15
+    });
+  });
+
+  test('should return all sweets in the inventory', () => {
+    const allSweets = shop.getAllSweets();
+    expect(allSweets.length).toBe(2);
+    expect(allSweets[0].name).toBe('Kaju Katli');
+    expect(allSweets[1].name).toBe('Gajar Halwa');
+  });
+});
+
